@@ -3,11 +3,27 @@
 
 #include "stdafx.h"
 #include <time.h>
+#include <string.h>
 
 void swap(int *arr, int begin, int end){
 	int temp = arr[begin];
 	arr[begin] = arr[end];
 	arr[end] = temp;
+}
+
+void InsertSort(char *arr){
+	int i, j;
+	int temp;
+	for (i = 1; i < strlen(arr); i++){
+		if (arr[i] < arr[i - 1]){
+			temp = arr[i];
+			for (j = i - 1; arr[j] > temp; j--){
+				arr[j+1] = arr[j];
+			}
+			arr[j + 1] = temp;
+		}
+	}
+
 }
 
 int Partition3(int *arr, int begin, int end){
@@ -98,6 +114,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	int arr2[10] = { 2, 3, 3, 5, 7, 6, 1, 9, 3, 5 };
 	int arr3[10] = { 2, 3, 3, 5, 7, 6, 1, 9, 3, 5 };
 	int arr4[10] = { 2, 3, 3, 5, 7, 6, 1, 9, 3, 5 };
+	char arr[] = "skdf";
+	InsertSort(arr);
+	printf("%s", arr);
 	int end = 10 - 1;
 
 	Qsort1(arr1, 0, end);
